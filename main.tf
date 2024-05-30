@@ -3,5 +3,6 @@ module "tools" {
   source = "./module"
   name  = var.tools["name"]
   instance_type = each.value["instance_type"]
+  port_no = each.value["port_no"]
 }
 
