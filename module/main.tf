@@ -32,7 +32,7 @@ resource "aws_instance" "main" {
   instance_market_options {
     market_type = "spot"
     spot_options {
-      max_price                       = 0.0031
+      max_price                       = 0.0686
       instance_interruption_behavior  = "stop"
       spot_instance_type              = "persistent"
     }
