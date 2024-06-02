@@ -30,6 +30,7 @@ resource "aws_instance" "main" {
   vpc_security_group_ids = [aws_security_group.main.id]
 
   instance_market_options {
+    market_type = "spot"
     spot_options {
       max_price                       = 0.0031
       instance_interruption_behavior  = "stop"
