@@ -13,8 +13,14 @@
     owner: prometheus
     group: prometheus
 
-#- name: Start vault service
-#  ansible.builtin.systemd_service:
-#    name: vault
-#    state: restarted
-#    enabled: true
+- name: Copy Prometheus Systemd File
+  ansible.builtin.template:
+    src: prometheus.service
+    dest: /etc/systemd/system/prometheus.service
+
+- name: Start Prometheus Service
+  ansible.builtin.systemd_service:
+    name: prometheus
+    state: restarted
+    enabled: true
+    daemon-reload: yes
