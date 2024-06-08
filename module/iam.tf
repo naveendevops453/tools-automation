@@ -28,10 +28,7 @@ EOF
         {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:DescribeAvailabilityZones"
-            ],
+            "Action": ${var.policy_actions},
             "Resource": "*"
         }
     ]
