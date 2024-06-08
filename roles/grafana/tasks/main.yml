@@ -2,7 +2,7 @@
   ansible.builtin.shell: set-prompt grafana
 
 - name: Copy repo file
-  ansible.builtin.templates:
+  ansible.builtin.template:
     src: grafana.repo
     dest: /etc/yum.repo.s/grafana.repo
 
