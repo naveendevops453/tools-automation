@@ -3,37 +3,34 @@ resource "aws_iam_role" "main" {
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
       },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
+    ]
+  })
 
   inline_policy {
     name = "inline_policy"
 
-    policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
+    policy = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
         {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": ${var.policy_actions},
-            "Resource": "*"
-        }
-    ]
-}
-EOF
+          Action   = var.policy_actions
+          Effect   = "Allow"
+          Resource = "*"
+        },
+      ]
+    })
+  }
   }
 
   tags = {
