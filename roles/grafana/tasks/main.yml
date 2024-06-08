@@ -1,3 +1,6 @@
+- name: Set Prompt
+  ansible.builtin.shell: set-prompt grafana
+
 - name: Copy repo file
   ansible.builtin.templates:
     src: grafana.repo
