@@ -16,3 +16,10 @@
     name: grafana-server
     state: restarted
     enabled: yes
+
+- name: create prometheus datasource
+  community.grafana.grafana_datasource:
+    name: prometheus
+    ds_type: prometheus
+    ds_url: http://prometheus-internal.devopsengineer2.online:9090
+    access: direct
