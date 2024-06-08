@@ -12,6 +12,7 @@
     remote_src: true
     owner: prometheus
     group: prometheus
+
 - name:  Update prometheus Configuration
   ansible.builtin.template:
     src: prometheus.yml
